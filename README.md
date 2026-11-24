@@ -15,6 +15,12 @@ Every file below `src/` is reached by its path without `src/` and `.ts`.
   (`github.ts`), the hub that tells every open browser that something changed, and the webhook that feeds it
 - `src/app`: what the browser side needs: the live connection
 
+- `src/worker/repo.ts`: `Repo`, one person's work on the data repository: commits of several files at once (with the check
+  that nobody moved the branch), draft and submitted pull requests, comments, checks, what changed on the base branch.
+  The editor says which branches are submissions and which files a submission may change (`RepoOptions`).
+
+Shared code has no Svelte runes (`$state`): an editor's Vite does not compile `.svelte.ts` files from `node_modules`.
+
 What differs between the editors (cookie names, the prefix of the branches) is handed in by the editor: `createAuth`,
 `createHook`.
 
